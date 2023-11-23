@@ -1,3 +1,20 @@
+{prvocislo}
+function prvocislo(a:longint):boolean; {true-je;false-nie je}
+var i:longint; sqra:longint; is:boolean;
+begin
+        sqra:=round(sqrt(a));
+        is:=true;
+        if a > 3 then begin
+                i:=2; if (a mod i) = 0 then is:=false; inc(i);
+                repeat
+                        if (a mod i) = 0 then is:=false;
+                        i:=i+2;
+                until (i>sqra) or not(is);
+        end;
+        if a = 1 then is:=false;
+        prvocislo:=is;
+end;
+
 {Factorial function}
 function fact(n:byte):longint;
 var i:byte;f:longint;
