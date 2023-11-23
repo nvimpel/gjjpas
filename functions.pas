@@ -25,3 +25,14 @@ begin
     z := 1;
     for i:= 1 to y do z := z * x;
 end;
+
+{Encrypt and decrypt}
+{inp - veta, x - 1=zakodovat/0=odkodovat, y - sifra}
+function sifdesif(inp:string;x,y:byte):string;
+var i:byte;
+tempString:string;
+begin
+        tempString:='';
+        if x = 1 then for i:=1 to length(inp) do tempString := tempString + chr(ord(inp[i])+y) else for i:=1 to length(inp) do tempString := tempString + chr(ord(inp[i])y)
+        sifdesif:=inp;
+end;
