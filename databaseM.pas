@@ -13,12 +13,14 @@ Tsubor = file of TClovek;
 var opt:char;
     clovek:TClovek;
     subor,tempSubor:Tsubor;
+
 {Vypis hlavicky tabulky}
 procedure Hlavicka();
 begin
     clrscr;
     writeln('RODNE C.':11, 'MENO':11, 'PRIEZVISKO':21, 'PLAT':6, 'POHLAVIE':9);
 end;
+
 {Vypis jedneho cloveka}
 procedure VypisCloveka(clovek:TClovek);
 begin
@@ -45,6 +47,7 @@ begin
     if ((n mod 11 = 0) or (n = 0)) then localNumberTest := true;
     numberTest := localNumberTest;
 end;
+
 {Funkcia na testovanie rodneho cisla}
 function testRC(rc:string):boolean;
 var duo:string[2]; {dvojica cisel}
@@ -67,6 +70,7 @@ begin
     if numberTest(rc) = false then localTestRC := false;
     testRC := localTestRC;
 end;
+
 {Procedure na vypis menu}
 procedure menu();
 begin
@@ -77,6 +81,7 @@ begin
     writeln('5. Vypis databazu');
     writeln('6. Ukonci program');
 end;
+
 {Procedure na vypis menu pre upravu udajov}
 procedure menuUprav();
 begin
@@ -85,6 +90,7 @@ begin
     writeln('3. Zmen priezvisko');
     writeln('4. Zmen plat');
 end;
+
 {Procedure na vlozenie cloveka do databazy}
 procedure Vloz();
 var vklad:TClovek;
@@ -104,6 +110,7 @@ begin
     if ((vklad.rc[3] = '0') or (vklad.rc[3] = '1')) then vklad.sex := true else vklad.sex := false; 
     write(subor, vklad);
 end;
+
 {Procedure na hladanie cloveka podla rodneho cisla, ID je pozicia v subore}
 procedure Hladam(rc:string; var ID:longint);
 var found:boolean;
@@ -121,6 +128,7 @@ begin
         VypisCloveka(clovek);
     end else begin writeln('Clovek s tymto rodnym cislom neexistuje'); ID := -1; end; 
 end;
+
 {Procedure na hladanie cloveka podla rodneho cisla, err je pozicia v subore ak error = -1 tak clovek neexistuje}
 procedure Najdi();
 var rc:string[10];
@@ -131,6 +139,7 @@ begin
     Hladam(rc,err);
     readln;
 end;
+
 {Procedure na opravu udajov cloveka, err je pozicia v subore ak error = -1 tak clovek neexistuje}
 procedure Oprav();
 var rc:string;
@@ -173,6 +182,7 @@ begin
         write(subor, clovek);
     end;
 end;
+
 {Procedure na vymazanie cloveka z databazy, err je pozicia v subore ak error = -1 tak clovek neexistuje}
 procedure Vymaz();
 var rc:string;
@@ -198,12 +208,12 @@ begin
         end;
     end;
 end;
+
 {Procedure na vypis databazy}
 procedure Vypis();
 var clovek:TClovek;
     size,pages,page:longint;
     i:byte;
-
 begin
     reset(subor);
     size := filesize(subor);
@@ -221,7 +231,6 @@ begin
     end;
     readln;
 end;
-
 
 begin
     clrscr;
@@ -255,6 +264,4 @@ begin
     close(tempSubor);
     erase(tempSubor);
     close(subor);
-    
-
 end.
