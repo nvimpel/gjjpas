@@ -214,7 +214,7 @@ begin
     Hlavicka();
     for i := 1 to 10 do begin
         if not(eof(subor)) then begin
-            seek(subor, (page-1)*10 + i);
+            seek(subor, (page-1)*10 + i - 1);
             read(subor, clovek);
             VypisCloveka(clovek);
         end;
