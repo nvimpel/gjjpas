@@ -1,0 +1,44 @@
+
+Program generator;
+uses crt;
+
+TClovek = record
+    rc:string[10]; {rodne cislo}
+    meno:string[10];
+    pr:string[15];
+    plat:word;
+    sex:boolean; {T = muz , F = zena}
+end;
+Tsubor = file of TClovek;
+var names, surnames:text;
+	fileOut:Tsubor;
+	i,n:longint;
+	clovek:TClovek;
+	h:byte;
+	s:string;
+	
+	
+
+Begin
+
+	randomize;
+	assign(names, 'names.txt') ;
+	assign(surnames, 'surnames.txt');
+	reset(names); reset(surnames);
+	writeln('Zadaj počet ludi na vygenerovanie');
+	readln(n);
+	for i:= 1 to n do begin
+		h := Random(100);
+		str(h;s);
+		if h =< 9 then TClovek.rc := ' ' + s else TClovek.rc := s;
+		h := (Random(12)+1) + (Random(2)*50);
+		str(h;s);
+		if h =< 9 then TClovek.rc := TClovek.rc + ' ' + s else TClovek.rc := TClovek.rc + s;
+		
+		
+	end;
+	
+	
+	
+
+End.
