@@ -1,7 +1,9 @@
 
 Program generator;
 uses crt;
-
+type
+TMeno = string[10];
+TPr = string[15];
 TClovek = record
     rc:string[10]; {rodne cislo}
     meno:string[10];
@@ -10,35 +12,141 @@ TClovek = record
     sex:boolean; {T = muz , F = zena}
 end;
 Tsubor = file of TClovek;
-var names, surnames:text;
-	fileOut:Tsubor;
-	i,n:longint;
-	clovek:TClovek;
-	h:byte;
-	s:string;
-	
-	
+var names:file of string[10];
+    surnames:file of string[15];
+    meno : TMeno;
+    pr: TPr;
+    mesiace:text;
 
+	fileOut:Tsubor;
+	i,n,j,m:longint;
+	clovek:TClovek;
+	mesiac,even,odd,l:byte;
+	h:integer;
+    s:string;
+
+function year():string;
+var s:string;
+    h:integer;
+begin
+    s := '';   
+    h:= Random(100);
+    str(h,s);
+    if h <= 9 then year := '0' + s else year := s;
+end;
+function month(var mesiac:byte):string;
+var s:string;
+    h:integer;
+begin
+    month := '';
+    s := '';
+    mesiac := (Random(12)+1);
+    h :=  mesiac + (Random(2)*50);
+    str(h,s);
+    if h <= 9 then month := month + '0' + s else month := month + s;
+end;
+
+function day(mesiac:integer):string;
+var s:string;
+    h:integer;
+    den:byte;
+begin
+    s := '';
+    day := '';
+    reset(mesiace);
+    for j := 1 to mesiac do begin
+        readln(mesiace, h);
+    end;
+    h := Random(h) + 1;
+    str(h,s);
+    if h <= 9 then day := day + '0' + s else day := day + s;
+    
+end;
+function rand3():string;
+var s:string;
+    h:integer;
+begin
+    h := Random(1000);
+    str(h,s);
+    if h <= 9 then rand3 := '00' + s else if h <= 99 then rand3 := '0' + s else rand3 := s;
+end;
+function controlNum():string;
+var s:string;
+    h:integer;
+    m:byte;
+begin
+    even := 0;
+    odd := 0;
+    for l := 1 to 9 do begin
+        if l mod 2 = 0 then even := even + ord(clovek.rc[l]) - 48
+        else odd := odd + ord(clovek.rc[l]) - 48;
+    end;
+    m := abs(odd - even);
+    {Rozdiel musi byt delitelny 11 - pravidlo rodnych cisel}
+    if ((m mod 11 = 0) or (m = 0)) then h := 0
+    else h := 11 - (m mod 11); 
+    str(h,s);
+    controlNum := s;
+end;
 Begin
 
 	randomize;
-	assign(names, 'names.txt') ;
-	assign(surnames, 'surnames.txt');
-	reset(names); reset(surnames);
-	writeln('Zadaj počet ludi na vygenerovanie');
+	assign(names, 'names.dat') ;
+	assign(surnames, 'surnames.dat');
+    assign(mesiace, 'mesiace.txt');
+    assign(fileOut, 'data.dat');
+    {$I-}
+    reset(fileOut);
+    {$I+}
+    if IOResult <> 0 then begin
+        rewrite(fileOut);
+        close(fileOut);
+        reset(fileOut);
+    end;
+	reset(names); reset(surnames); 
+	
+    writeln('Zadaj počet ludi na vygenerovanie');
 	readln(n);
-	for i:= 1 to n do begin
-		h := Random(100);
-		str(h;s);
-		if h =< 9 then TClovek.rc := ' ' + s else TClovek.rc := s;
-		h := (Random(12)+1) + (Random(2)*50);
-		str(h;s);
-		if h =< 9 then TClovek.rc := TClovek.rc + ' ' + s else TClovek.rc := TClovek.rc + s;
-		
-		
-	end;
-	
-	
-	
+    seek(fileOut, filesize(fileOut));
+    for i:= 1 to n do begin
+        
+        mesiac := 0;
+		clovek.rc := '';
+        clovek.rc := clovek.rc + year();
+        clovek.rc := clovek.rc + month(mesiac);
+        clovek.rc := clovek.rc + day(mesiac);
+        clovek.rc := clovek.rc + rand3();
+        if controlNum() = '10' then clovek.rc[9] := chr(ord(clovek.rc[9]) - 1);
+        clovek.rc := clovek.rc + controlNum();
+        
+        
+
+        
+        reset(names);
+
+        h:= Random(filesize(names) - 1) + 1;
+        seek(names, h);
+        read(names, meno);
+        clovek.meno := meno;
+        
+        reset(surnames);
+        h:= Random(filesize(surnames) - 1) + 1;
+        seek(surnames, h);
+        read(surnames, pr);
+        clovek.pr := pr;
+        
+        clovek.plat := Random(10000)+100;
+        if ((clovek.rc[3] = '0') or (clovek.rc[3] = '1')) then clovek.sex := true else clovek.sex := false;
+        writeln(clovek.meno, ' ',clovek.pr, ' ',clovek.plat, ' ',clovek.rc, ' ');
+        
+        write(fileOut, clovek);
+
+
+    end;
+	close(names);
+	close(surnames);
+	close(mesiace);
+    close(fileOut);
+    readln();
 
 End.
