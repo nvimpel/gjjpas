@@ -13,10 +13,10 @@ TSortArray = array['A'..'Z'] of longint;
 Tsubor = file of TClovek;
 
 var opt:char;
-    clovek:TClovek;
     subor,tempSubor:Tsubor;
-    suborName:TConfig;
     configF:file of TConfig;
+    exportF:text;
+
 {Vypis hlavicky tabulky}
 procedure Hlavicka();
 begin
@@ -32,7 +32,7 @@ begin
 end;
 
 {Funkcia na testovanie delitelnosti rodneho cisla}
-function numberTest(rc:string):boolean;
+function NumberTest(rc:string):boolean;
 var even, odd:integer;
     i,n:byte;
     localNumberTest:boolean;
@@ -48,11 +48,11 @@ begin
     n := abs(odd - even);
     {Rozdiel musi byt delitelny 11 - pravidlo rodnych cisel}
     if ((n mod 11 = 0) or (n = 0)) then localNumberTest := true;
-    numberTest := localNumberTest;
+    NumberTest := localNumberTest;
 end;
 
 {Funkcia na testovanie rodneho cisla}
-function testRC(rc:string):boolean;
+function TestRC(rc:string):boolean;
 var duo:string[2]; {dvojica cisel}
     valDuo:integer; {dvojica cisel premenena na integer}
     err,i:byte;
@@ -72,9 +72,9 @@ begin
     val(duo, valDuo,err);
     {skontroluj den}
     if not((valDuo >= 1) and (valDuo <= 31)) then localTestRC := false;
-    {skontroluj pravidlo delitelnosti 11 - funkcia numberTest} 
-    if numberTest(rc) = false then localTestRC := false;
-    testRC := localTestRC;
+    {skontroluj pravidlo delitelnosti 11 - funkcia NumberTest} 
+    if NumberTest(rc) = false then localTestRC := false;
+    TestRC := localTestRC;
 end;
 
 {Procedure na vypis menu}
@@ -99,11 +99,15 @@ begin
 end;
 {Procedure na vypis menu pre nastavenia}
 procedure menuNastavenia();
+var suborName:TConfig;
 begin
+    reset(configF);
+    read(configF, suborName);
     writeln('1. Zmen subor databazy (momentalne:', suborName, ')');
     writeln('2. Zorad databazu podla abecedy priezviska');
     writeln('3. Vymaz databazu');
-    writeln('4. Naspat');
+    writeln('4. Exportuj databazu do textoveho suboru');
+    writeln('5. Naspat');
 end;
 
 
@@ -140,15 +144,15 @@ begin
     readln;
 end;
 {Funkcia na kontrolu ci je meno alebo priezvisko validne}
-function nameValid(name:string):boolean;
+function NameValid(name:string):boolean;
 var i:byte;
     valid:boolean;
 begin
     valid := true;
     for i := 1 to length(name) do begin
-        if not(((name[i] >= 'a') and (name[i] <= 'z')) or ((name[i] >= 'A') and (name[i] <= 'Z'))) then valid := false;
+        if not((name[i] in ['a'..'z']) or (name[i] in ['A'..'Z']))  then valid := false;
     end;
-    nameValid := valid;
+    NameValid := valid;
 end;
 
 {Procedure na vlozenie cloveka do databazy}
@@ -164,7 +168,7 @@ begin
         clrscr;
         write('Zadaj rodne cislo bez lomitka: ');
         readln(rc);
-    until (testRC(rc) = true) or (rc = '');
+    until (TestRC(rc) = true) or (rc = '');
     if rc <> '' then begin    
         Hladam(rc,err);
         clrscr;
@@ -174,12 +178,12 @@ begin
                 clrscr;
                 write('Zadaj krsne meno: ');
                 readln(clovek.meno);
-            until nameValid(clovek.meno) = true;
+            until NameValid(clovek.meno) = true;
             if clovek.meno[1] in ['a'..'z'] then clovek.meno[1] := chr(ord(clovek.meno[1]) - 32);
             repeat
                 write('Zadaj priezvisko: ');
                 readln(clovek.pr);
-            until nameValid(clovek.pr) = true;
+            until NameValid(clovek.pr) = true;
             if clovek.pr[1] in ['a'..'z'] then clovek.pr[1] := chr(ord(clovek.pr[1]) - 32);
             write('Zadaj plat: ');
             readln(contrl);
@@ -249,7 +253,7 @@ begin
                 repeat
                     write('Zadaj rodne cislo bez lomitka: ');
                     readln(clovek.rc);
-                until testRC(clovek.rc) = true;
+                until TestRC(clovek.rc) = true;
                 if ((clovek.rc[3] = '0') or (clovek.rc[3] = '1')) then clovek.sex := true else clovek.sex := false; 
             end;
             '2':begin
@@ -257,7 +261,7 @@ begin
                     clrscr;
                     write('Zadaj krsne meno: ');
                     readln(clovek.meno);
-                until nameValid(clovek.meno) = true;
+                until NameValid(clovek.meno) = true;
                 if clovek.meno[1] in ['a'..'z'] then clovek.meno[1] := chr(ord(clovek.meno[1]) - 32);
             end;
             '3':begin
@@ -265,7 +269,7 @@ begin
                     clrscr;
                     write('Zadaj priezvisko: ');
                     readln(clovek.pr);
-                until nameValid(clovek.pr) = true;
+                until NameValid(clovek.pr) = true;
                 if clovek.pr[1] in ['a'..'z'] then clovek.pr[1] := chr(ord(clovek.pr[1]) - 32);
             end;
             '4':begin
@@ -321,29 +325,30 @@ begin
     reset(subor);
     size := filesize(subor);
     {Vypocitaj pocet stran databazy}
-    if ((size div 10 = 0) and (size > 10)) then pages := size div 10 else pages := (size div 10) + 1;
-    writeln('Databaza obsahuje ', size, ' zaznamov a ', pages, ' stran po 10 zaznamov');
-    writeln('Zadaj cislo strany ktoru chces vypisat: ');
-    readln(page);
-    Hlavicka();
-    for i := 1 to 10 do begin
-        if not(eof(subor)) then begin
-            seek(subor, (page-1)*10 + i - 1);
-            read(subor, clovek);
-            VypisCloveka(clovek);
+    if (size mod 10 = 0) then pages := size div 10 else pages := (size div 10) + 1;
+    
+    if size > 0 then begin
+        repeat
+            clrscr;
+            writeln('Databaza obsahuje ', size, ' zaznamov a ', pages, ' stran po 10 zaznamov');
+            writeln('Zadaj cislo strany ktoru chces vypisat: ');
+            readln(page);
+        until (page > 0) and (page <= pages);
+        Hlavicka();
+        for i := 1 to 10 do begin
+            if not(eof(subor)) then begin
+                seek(subor, (page-1)*10 + i - 1);
+                read(subor, clovek);
+                VypisCloveka(clovek);
+            end;
         end;
-    end;
+    end else writeln('Databaza je prazdna');
     readln;
+    
 end;
-{Procedure na zmenu suboru s databazou}
-procedure zmenSubor();
+
+procedure suborInitialize();
 begin
-    clrscr;
-    close(subor);
-    write('Zadaj nazov suboru: ');
-    readln(suborName);
-    assign(subor, suborName);
-    {vytvor subor ak neexistuje}
     {$I-}
     reset(subor);
     {$I+}
@@ -352,12 +357,24 @@ begin
         close(subor);
         reset(subor);
     end;
+end;
+
+{Procedure na zmenu suboru s databazou}
+procedure ZmenSubor();
+var suborName:TConfig;
+begin
+    clrscr;
+    close(subor);
+    write('Zadaj nazov suboru: ');
+    readln(suborName);
+    assign(subor, suborName);
+    suborInitialize();
     reset(configF);
     write(configF, suborName);
 end;
 
 {Procedura kontrolujuca ci je databaza zoradena}
-function isSorted:boolean;
+function IsSorted:boolean;
 var clovek,clovek2:TClovek;
     i:byte;
     sorted:boolean;
@@ -370,7 +387,7 @@ begin
         if clovek.pr > clovek2.pr then sorted := false;
         clovek := clovek2;
     end;
-    isSorted := sorted;
+    IsSorted := sorted;
 
 end;
 {Funkcia na rekurzivne spocitanie prvkov v poli}
@@ -385,7 +402,7 @@ begin
     RecursiveCount := count;
 end;
 {Procedure na zoradenie databazy podla abecedy priezviska}
-procedure zoradPriezvisko();
+procedure ZoradPriezvisko();
 var eachElement,doneElements:TSortArray;
     i,j,n:longint;
     clovek,clovek2:TClovek;
@@ -395,7 +412,7 @@ begin
         eachElement[a] := 0;
         doneElements[a] := 0;
     end;
-    if isSorted() = false then begin
+    if IsSorted() = false then begin
         reset(subor);
         while not(eof(subor)) do begin
             read(subor, clovek);
@@ -410,7 +427,6 @@ begin
             write(tempSubor, clovek);
         end;
         reset(subor);
-    readln;
         for i := 1 to 26 do begin
             while not(eof(subor)) do begin
                 read(subor, clovek);
@@ -422,7 +438,6 @@ begin
             end;
         end;
         
-        readln;
         close(subor);
         rewrite(subor);
         
@@ -434,7 +449,6 @@ begin
                     seek(tempSubor, i);
                     read(tempSubor, clovek);
                     read(tempSubor, clovek2);
-                    readln;
                     if clovek.pr > clovek2.pr then begin
                         seek(tempSubor, i);
                         write(tempSubor, clovek2);
@@ -442,7 +456,6 @@ begin
                     end;
                 end;
                 i := i + 1;
-                readln;
             end;
             j := j + eachElement[a];
         end;
@@ -452,6 +465,8 @@ begin
             read(tempSubor, clovek);
             write(subor, clovek);
         end;
+        writeln('Databaza bola zoradena');
+        readln;
 
 
     end else begin
@@ -462,7 +477,7 @@ begin
 end;
 
 {Procedure na vymazanie databazy}
-procedure wipeAll();
+procedure WipeAll();
 var opt:char;
 sure:string;
 begin
@@ -485,6 +500,27 @@ begin
     end;
 end;
 
+procedure ExportFile();
+var clovek:TClovek;
+    fileName:string;
+    pohlavie:string;
+begin
+    clrscr;
+    write('Zadaj nazov suboru: ');
+    readln(fileName);
+    fileName := fileName + '.txt';
+    assign(exportF, fileName);
+    rewrite(exportF);
+    reset(subor);
+    writeln(exportF, 'RODNE C.':11, 'MENO':11, 'PRIEZVISKO':21, 'PLAT':6, 'POHLAVIE':9);
+    while not(eof(subor)) do begin
+        read(subor, clovek);
+        if clovek.sex = true then pohlavie := 'Muz' else pohlavie := 'Zena';
+        writeln(exportF, clovek.rc:11, clovek.meno:11, clovek.pr:21, clovek.plat:6 , pohlavie:9);
+    end;
+    close(exportF);
+end;
+
 procedure Nastavenia();
 var opt:char;
 begin
@@ -496,13 +532,16 @@ begin
         clrscr;
         cursoron;
         case opt of
-            '1':zmenSubor();
-            '2':zoradPriezvisko();
-            '3':wipeAll();
+            '1':ZmenSubor();
+            '2':ZoradPriezvisko();
+            '3':WipeAll();
+            '4':ExportFile();
         end;
-    until opt = '4';
+    until opt = '5';
 end;
 
+procedure InitializeProgram();
+var suborName:TConfig;
 begin
     clrscr;
     assign(configF, 'configF.dat');
@@ -520,18 +559,15 @@ begin
     read(configF, suborName);
 
     assign(subor, suborName);
-    {$I-}
-    reset(subor);
-    {$I+}
-    if IOResult <> 0 then begin
-        rewrite(subor);
-        close(subor);
-        reset(subor);
-    end;
+    suborInitialize();
+    
     
     assign(tempSubor, 'temp.dat');
     rewrite(tempSubor);
+end;
 
+procedure MainProgram();
+begin
     repeat
         cursoroff();
         clrscr;
@@ -551,4 +587,10 @@ begin
     close(tempSubor);
     erase(tempSubor);
     close(subor);
+    close(configF);
+end;
+
+begin
+    InitializeProgram();
+    MainProgram();
 end.
