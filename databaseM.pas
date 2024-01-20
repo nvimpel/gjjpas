@@ -97,7 +97,7 @@ begin
     writeln('3. Zmen priezvisko');
     writeln('4. Zmen plat');
 end;
-
+{Procedure na vypis menu pre nastavenia}
 procedure menuNastavenia();
 begin
     writeln('1. Zmen subor databazy (momentalne:', suborName, ')');
@@ -115,15 +115,18 @@ var found:boolean;
 begin
     found := false;
     reset(subor);
+    {Prebehni cely subor a hladaj cloveka s rodnym cislom rc}
     while (not(eof(subor)) and (found = false)) do begin
         ID := filepos(subor);
         read(subor, clovek);
         if clovek.rc = rc then found := true;
     end;
+    {Ak najdes cloveka tak ho vypis}
     if found = true then begin
         Hlavicka();
         VypisCloveka(clovek);
-    end else begin writeln('Clovek s tymto rodnym cislom neexistuje'); ID := -1; end; 
+    end {Ak nenajdes cloveka tak vypis chybu}
+    else begin writeln('Clovek s tymto rodnym cislom neexistuje'); ID := -1; end; 
 end;
 
 {Procedure na hladanie cloveka podla rodneho cisla, err je pozicia v subore ak error = -1 tak clovek neexistuje}
@@ -136,6 +139,7 @@ begin
     Hladam(rc,err);
     readln;
 end;
+{Funkcia na kontrolu ci je meno alebo priezvisko validne}
 function nameValid(name:string):boolean;
 var i:byte;
     valid:boolean;
@@ -184,30 +188,34 @@ begin
             
             rewrite(tempSubor);
             reset(subor);
+            {Prekopiruj subor do docasneho suboru}
             while not(eof(subor)) do begin
                 read(subor, clovek2);
                 write(tempSubor, clovek2);
             end;
             reset(subor);
             n := -1;
+            {Najdi poziciu v subore kde ma byt clovek ulozeny}
             while not(eof(subor)) and (n = -1) do begin
                 read(subor, clovek2);
                 if (clovek2.pr > clovek.pr)  then begin
                     n := filepos(subor) - 1;
                 end;
             end;
+            {Ak je pozicia n = -1 tak clovek patri na koniec suboru, inak ho vloz na poziciu n}
             if n <> -1 then begin
                 seek(subor, n);
                 truncate(subor);
                 seek(subor, filesize(subor));
                 write(subor, clovek);
                 seek(tempSubor, n);
+                {Prekopiruj zvysok suboru z docasneho suboru}
                 while not(eof(tempSubor)) do begin
                     read(tempSubor, clovek);
                     write(subor, clovek);
                 end;
             end 
-            else begin
+            else begin 
                 seek(subor, filesize(subor));
                 write(subor, clovek);
             end;
@@ -224,6 +232,7 @@ var rc:string;
     opt:char;
     err:longint;
     clovek:TClovek;
+    contrl:real;
 begin
     write('Zadaj rodne cislo cloveka ktoreho chces opravit: ');
     readln(rc);
@@ -257,10 +266,12 @@ begin
                     write('Zadaj priezvisko: ');
                     readln(clovek.pr);
                 until nameValid(clovek.pr) = true;
+                if clovek.pr[1] in ['a'..'z'] then clovek.pr[1] := chr(ord(clovek.pr[1]) - 32);
             end;
             '4':begin
                 write('Zadaj plat: ');
-                readln(clovek.plat);
+                readln(contrl);
+                clovek.plat := round(contrl);
             end;
         end;
         seek(subor, err);
@@ -279,18 +290,24 @@ begin
     Hladam(rc, err);
     reset(subor);
     rewrite(tempSubor);
-    while not(eof(subor)) do begin
-        read(subor, clovek);
-        write(tempSubor, clovek);
-    end;
+    
     if err <> -1 then begin
-        seek(subor, err);
-        truncate(subor);
-        seek(subor, filesize(subor));
-        seek(tempSubor, err+1);
-        while not(eof(tempSubor)) do begin
-            read(tempSubor, clovek);
-            write(subor, clovek);
+        writeln('Naozaj chces vymazat cloveka? (y/n)');
+        if readkey = 'y' then begin
+            {Prekopiruj subor do docasneho suboru az po poziciu}
+            while not(eof(subor)) do begin
+                read(subor, clovek);
+                write(tempSubor, clovek);
+            end;
+            
+            seek(subor, err);
+            truncate(subor);
+            seek(subor, filesize(subor));
+            seek(tempSubor, err+1);
+            while not(eof(tempSubor)) do begin
+                read(tempSubor, clovek);
+                write(subor, clovek);
+            end;
         end;
     end;
 end;
@@ -303,6 +320,7 @@ var clovek:TClovek;
 begin
     reset(subor);
     size := filesize(subor);
+    {Vypocitaj pocet stran databazy}
     if ((size div 10 = 0) and (size > 10)) then pages := size div 10 else pages := (size div 10) + 1;
     writeln('Databaza obsahuje ', size, ' zaznamov a ', pages, ' stran po 10 zaznamov');
     writeln('Zadaj cislo strany ktoru chces vypisat: ');
@@ -325,6 +343,7 @@ begin
     write('Zadaj nazov suboru: ');
     readln(suborName);
     assign(subor, suborName);
+    {vytvor subor ak neexistuje}
     {$I-}
     reset(subor);
     {$I+}
@@ -415,7 +434,6 @@ begin
                     seek(tempSubor, i);
                     read(tempSubor, clovek);
                     read(tempSubor, clovek2);
-                    writeln('load ', i);
                     readln;
                     if clovek.pr > clovek2.pr then begin
                         seek(tempSubor, i);
@@ -424,7 +442,6 @@ begin
                     end;
                 end;
                 i := i + 1;
-                writeln('passed');
                 readln;
             end;
             j := j + eachElement[a];
