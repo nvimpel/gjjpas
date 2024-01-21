@@ -12,8 +12,8 @@ TClovek = record
     sex:boolean; {T = muz , F = zena}
 end;
 Tsubor = file of TClovek;
-var names:file of string[10];
-    surnames:file of string[15];
+var namesW,namesM:file of string[10];
+    surnamesW,surnamesM:file of string[15];
     meno : TMeno;
     pr: TPr;
     mesiace:text;
@@ -91,8 +91,10 @@ end;
 Begin
 
 	randomize;
-	assign(names, 'names.dat') ;
-	assign(surnames, 'surnames.dat');
+	assign(namesW, 'namesW.dat');
+    assign(namesM, 'namesM.dat');
+	assign(surnamesM, 'sorted.dat');
+    assign(surnamesW, 'sortedW.dat');
     assign(mesiace, 'mesiace.txt');
     assign(fileOut, 'data.dat');
     {$I-}
@@ -103,7 +105,6 @@ Begin
         close(fileOut);
         reset(fileOut);
     end;
-	reset(names); reset(surnames); 
 	
     writeln('Zadaj počet ludi na vygenerovanie');
 	readln(n);
@@ -120,31 +121,51 @@ Begin
         clovek.rc := clovek.rc + controlNum();
         
         
+        if ((clovek.rc[3] = '0') or (clovek.rc[3] = '1')) then clovek.sex := true else clovek.sex := false;
+        
 
         
-        reset(names);
+        if clovek.sex then begin
+            reset(namesM);
+            h:= Random(filesize(namesM) - 1) + 1;
+            seek(namesM, h);
+            read(namesM, meno);
+            clovek.meno := meno;
 
-        h:= Random(filesize(names) - 1) + 1;
-        seek(names, h);
-        read(names, meno);
-        clovek.meno := meno;
+            reset(surnamesM);
+            h:= Random(filesize(surnamesM) - 1) + 1;
+            seek(surnamesM, h);
+            read(surnamesM, pr);
+            clovek.pr := pr;
+        end
+        else begin
+            reset(namesW);
+            h:= Random(filesize(namesW) - 1) + 1;
+            seek(namesW, h);
+            read(namesW, meno);
+            clovek.meno := meno;
+
+            reset(surnamesW);
+            h:= Random(filesize(surnamesW) - 1) + 1;
+            seek(surnamesW, h);
+            read(surnamesW, pr);
+            clovek.pr := pr;
+        end;
+
         
-        reset(surnames);
-        h:= Random(filesize(surnames) - 1) + 1;
-        seek(surnames, h);
-        read(surnames, pr);
-        clovek.pr := pr;
         
         clovek.plat := Random(10000)+100;
-        if ((clovek.rc[3] = '0') or (clovek.rc[3] = '1')) then clovek.sex := true else clovek.sex := false;
+        
         writeln(clovek.meno, ' ',clovek.pr, ' ',clovek.plat, ' ',clovek.rc, ' ');
         
         write(fileOut, clovek);
 
 
     end;
-	close(names);
-	close(surnames);
+	close(namesM);
+    close(namesW);
+	close(surnamesM);
+    close(surnamesW);
 	close(mesiace);
     close(fileOut);
     readln();
