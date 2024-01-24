@@ -113,9 +113,11 @@ end;
 
 
 {Procedure na hladanie cloveka podla rodneho cisla, ID je pozicia v subore}
-procedure Hladam(rc:string; var ID:longint);
+function Hladam(rc:string):longint;
 var found:boolean;
     clovek:TClovek;
+    ID:longint;
+
 begin
     found := false;
     reset(subor);
@@ -126,21 +128,27 @@ begin
         if clovek.rc = rc then found := true;
     end;
     {Ak najdes cloveka tak ho vypis}
-    if found = true then begin
-        Hlavicka();
-        VypisCloveka(clovek);
-    end {Ak nenajdes cloveka tak vypis chybu}
-    else begin writeln('Clovek s tymto rodnym cislom neexistuje'); ID := -1; end; 
+    if found = false then ID := -1;
+    Hladam := ID;
+
+
 end;
 
 {Procedure na hladanie cloveka podla rodneho cisla, err je pozicia v subore ak error = -1 tak clovek neexistuje}
 procedure Najdi();
 var rc:string[10];
     err:longint;
+    clovek:TClovek;
 begin
     writeln('Zadaj rodne cislo cloveka ktoreho chces najst: ');
     readln(rc);
-    Hladam(rc,err);
+    if TestRC(rc) then err := Hladam(rc) else writeln('Zadali ste nespravne rodne cislo.');
+    if err <> -1 then begin
+        seek(subor, err);
+        read(subor, clovek);
+        Hlavicka();
+        VypisCloveka(clovek);
+    end else if err = -1 then writeln('Clovek nenajdeny');
     readln;
 end;
 {Funkcia na kontrolu ci je meno alebo priezvisko validne}
@@ -170,7 +178,7 @@ begin
         readln(rc);
     until (TestRC(rc) = true) or (rc = '');
     if rc <> '' then begin    
-        Hladam(rc,err);
+        err := Hladam(rc);
         clrscr;
         if err = -1 then begin 
             clovek.rc := rc;
@@ -224,7 +232,7 @@ begin
                 write(subor, clovek);
             end;
             readln;
-        end;
+        end else if err > -1 then writeln('Clovek uz je v databaze, vymaz ho alebo ho uprav');
     end;
 end;
 
@@ -240,7 +248,7 @@ var rc:string;
 begin
     write('Zadaj rodne cislo cloveka ktoreho chces opravit: ');
     readln(rc);
-    Hladam(rc, err);
+    err := Hladam(rc);
     if err <> -1 then begin    
         seek(subor, err);
         read(subor, clovek);
@@ -280,7 +288,7 @@ begin
         end;
         seek(subor, err);
         write(subor, clovek);
-    end;
+    end else if err = -1 then writeln('Clovek nie je v databaze');
 end;
 
 {Procedure na vymazanie cloveka z databazy, err je pozicia v subore ak error = -1 tak clovek neexistuje}
@@ -291,7 +299,7 @@ var rc:string;
 begin
     write('Zadaj rodne cislo cloveka ktoreho chces vymazat: ');
     readln(rc);
-    Hladam(rc, err);
+    err := Hladam(rc);
     reset(subor);
     rewrite(tempSubor);
     
@@ -313,7 +321,7 @@ begin
                 write(subor, clovek);
             end;
         end;
-    end;
+    end else if err = -1 then writeln('Clovek nie je v databaze');
 end;
 
 {Procedure na vypis databazy}
@@ -321,6 +329,7 @@ procedure Vypis();
 var clovek:TClovek;
     size,pages,page:longint;
     i:byte;
+    opt:char;
 begin
     reset(subor);
     size := filesize(subor);
@@ -335,13 +344,24 @@ begin
             readln(page);
         until (page > 0) and (page <= pages);
         Hlavicka();
-        for i := 1 to 10 do begin
-            if not(eof(subor)) then begin
-                seek(subor, (page-1)*10 + i - 1);
-                read(subor, clovek);
-                VypisCloveka(clovek);
+        repeat
+            clrscr;
+            Hlavicka();
+            reset(subor);
+            for i := 1 to 10 do begin
+                if not(eof(subor)) then begin
+                    seek(subor, (page-1)*10 + i - 1);
+                    read(subor, clovek);
+                    VypisCloveka(clovek);
+                end;       
             end;
-        end;
+            writeln('Strana ', page, ' z ', pages);
+            writeln('Zadaj plus pre dalsiu stranu a minus pre predchadzajucu stranu, stlac q pre navrat');
+            opt := readkey;
+            if opt = '+' then page := page + 1 else if opt = '-' then page := page - 1;
+            if page = 0 then page := 1 else if page > pages then page := pages;
+        until opt = 'q';
+        
     end else writeln('Databaza je prazdna');
     readln;
     
