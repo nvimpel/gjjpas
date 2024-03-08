@@ -1,3 +1,4 @@
+{vzorovy priklad na zaznam}
 program zaznam;
 uses crt;
 
