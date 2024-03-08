@@ -1,3 +1,4 @@
+{program hra s uzivaetlom hru uhadni ake cislo myslim, kazdeho hraca potom ulozi do tabulky}
 program tipniCislo;
 uses crt;
 
