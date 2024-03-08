@@ -1,3 +1,4 @@
+{generuj 'okno' na zaklade parametrov uvedenych uzivatelom}
 program okno;
 uses crt;
 var w,h:byte;
