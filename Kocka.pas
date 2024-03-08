@@ -1,3 +1,4 @@
+{program graficky zobrazuje statistiku hodov dvoch kociek, Gauseova distribucia}
 program statsKocka;
 uses crt;
 
