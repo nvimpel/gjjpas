@@ -1,3 +1,4 @@
+{Generuje pole ktore nasledne usporiada pomocou bublikovej metody triedenia O:n^2}
 program bubleSort;
 uses crt;
 var           A:array[1..15] of integer;
