@@ -1,3 +1,4 @@
+{otoc string a 'volitelne/ treba odpoznamkovat' pracuj v suboroch}
 program otacac;
 uses crt;
 
