@@ -1,3 +1,4 @@
+{uloz maticu do suboru}
 program OprMatice;
 uses crt;
 const   xmax = 10;
