@@ -1,3 +1,4 @@
+{koplexnejsi program na pracu s databazou, }
 program database;
 uses crt;
 type
