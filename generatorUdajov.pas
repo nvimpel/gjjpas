@@ -1,4 +1,4 @@
-
+{program generuje vzorove udaje pre databazu pouzivanu v programe databaseM, generuje Meno,Priezvisko,Vek,Pohlavie. RODNE CISLO ma spravny (pouzitelny) tvar}
 Program generator;
 uses crt;
 type
