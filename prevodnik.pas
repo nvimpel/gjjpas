@@ -1,3 +1,4 @@
+{protgram ktory prevadza medzi ciselnymi sustavami}
 program prevod;
 uses crt;
 var   inputType,i,j:byte;
