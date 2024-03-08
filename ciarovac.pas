@@ -1,3 +1,4 @@
+{program nakresli ciari s nahodou dlzkou a farbou rozne po obrazovke az po kym nioe je stlacena klavesa}
 program ciarovac;
 uses crt;
 var a,b,c,f:integer;
