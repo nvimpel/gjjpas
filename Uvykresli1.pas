@@ -1,3 +1,4 @@
+{Program vykresli trojuholnik alebo specificky obrazec na zaklade podmienok v najvyssej podmienke}
 program test;
 uses crt;
 
