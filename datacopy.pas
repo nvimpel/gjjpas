@@ -1,3 +1,4 @@
+{program ulozi hodnoty z textoveho suboru do binarneho suboru konkretne WORD}
 program test;
 
 uses crt;
