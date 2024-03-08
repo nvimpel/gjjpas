@@ -1,3 +1,4 @@
+{Vzorovy program na zapisovanie udajov do textoveho suboru}
 {Generuj n=1000  0 az 255}
 program ciselnik;
 uses crt;
