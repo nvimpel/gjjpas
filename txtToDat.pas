@@ -1,3 +1,4 @@
+{program jkovertuje textovy subor do binarneho}
 program convert;
 
 uses crt;
