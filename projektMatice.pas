@@ -1,3 +1,4 @@
+{komplexnejsi program na pracu s maticami}
 program OprMatice;
 uses crt;
 const   xmax = 10;
