@@ -1,3 +1,4 @@
+{Vzorovy program na zapisovanie udajov do binarneho suboru}
 {Generuj n=1000  0 az 255v binarnom subore}
 program ciselnik;
 uses crt;
