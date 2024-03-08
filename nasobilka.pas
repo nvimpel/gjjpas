@@ -1,3 +1,4 @@
+{program generuje priklady na malu nasobilku a nasledne vyhodnocuje uspesnost}
 program nasobilka;
 uses crt;
 
