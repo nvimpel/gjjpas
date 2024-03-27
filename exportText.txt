@@ -1,0 +1,21 @@
+   RODNE C.       MENO           PRIEZVISKO  PLAT POHLAVIE
+ 2009293770    Cestmir                Duska  1021      Muz
+ 40611603/0      Gerda             Czibulka   370     Zena
+ 8961145692       Afra                 Hrmo  8703     Zena
+ 2205180219     Narcis               Kucera  6187      Muz
+ 3603022511     Julian                Mihal   344      Muz
+ 5555285598       Zoro              Valusek  2163     Zena
+ 2461018955     Amalia                Kocka  1944     Zena
+ 7261229461     Dorian              Lintner  4647     Zena
+ 4156120628       Mira              Janoska  3674     Zena
+ 8060182635   Saturnin              Golonka  9853     Zena
+ 3305132097    Sidonia                 Husa  9227      Muz
+ 3855078128 Florentina               Medved  4113     Zena
+ 1855170119    Dalibor               Rusnak  5019     Zena
+ 0904301123       Oleg             Kralovic  5745      Muz
+ 6662065938   Domoslav                Zimka  8767     Zena
+ 5458297489    Karmena                Dulla  8882     Zena
+ 5311063901     Ludvig               Jonata  7826      Muz
+ 0451280874   Krescenc               Klepac  9077     Zena
+ 9002043097  Dobrotina                Zubko  1568      Muz
+ 7255121819      Linda               Martan  8761     Zena
