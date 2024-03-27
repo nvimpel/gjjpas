@@ -1,9 +1,9 @@
-{otoc string a 'volitelne/ treba odpoznamkovat' pracuj v suboroch}
 program otacac;
 uses crt;
 
 var subIn,subOut:text;
-    S:string;
+    V,S:string;
+    C:char;
 
 function otoc(slovo:string):string;
 var i,l:byte;
@@ -19,22 +19,30 @@ begin
 end;
 
 begin
+    readln();
     clrscr;
-    assign(subIn, 'slovaO.txt');
-    {assign(subOut, 'slovaO.txt');}
+    assign(subIn, 'slovaIn.txt');
+    assign(subOut, 'slovaOut.txt');
     reset(subIn);
-    {rewrite(subOut);}
-    {while(not(eof(subIn))) do begin
-        readln(subIn, S);
-        writeln(S);
-    end;}
-    reset(subIn);
+    rewrite(subOut);
+    writeln('check');
+    readln();
     while(not(eof(subIn))) do begin
-        readln(subIn, S);
-        writeln(otoc(S));
-    end; 
+        S := '';
+        V := '';
+        repeat
+            read(subIn, C);
+            if((C <> ' ') AND (C <> '.')) then S:=S+C
+            else if C = ' ' then begin V:=V+otoc(S)+' '; S:=''; end
+            else if C = '.' then begin V:=V+otoc(S)+'.'; S:=''; end
+        until (C = chr(13)) OR (eof(subIn));
+        read(subIn, C); 
+        writeln(V);
+        writeln(subOut, V);
+
+    end;
     readln();
     close(subIn);
-    {close(subOut);}
+    close(subOut);
 
 end.
