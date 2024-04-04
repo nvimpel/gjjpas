@@ -1,7 +1,6 @@
 program najdlhstring;
 uses crt;
-var s:string;
-    b:byte;
+    b,s:byte;
     c:char;
     fileIn:text;
 begin
@@ -9,12 +8,13 @@ begin
     clrscr;
     assign(fileIn,'najditext.txt');
     reset(fileIn);
+		b:=0;s:=0;
     while not eof(fileIn) do
     begin
         read(fileIn,c);    
-        if (c >= 'a')AND(c <= 'z') then s:=s+c
-        else if length(s) > b then b:=length(s);
-        if (c = ' ')OR(c = '.') then s:='';
+        if (c >= 'a')AND(c <= 'z') then s:=s+1
+        else if s > b then b:=s;
+        if (c = ' ')OR(c = '.') then s:=0;
         if (c = chr(12)) then read(fileIn,c);
     end;
     writeln('Dlzka slova:', b);
