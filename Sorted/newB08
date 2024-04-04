@@ -1,0 +1,23 @@
+program najdlhstring;
+uses crt;
+var s:string;
+    b:byte;
+    c:char;
+    fileIn:text;
+begin
+    readln();
+    clrscr;
+    assign(fileIn,'najditext.txt');
+    reset(fileIn);
+    while not eof(fileIn) do
+    begin
+        read(fileIn,c);    
+        if (c >= 'a')AND(c <= 'z') then s:=s+c
+        else if length(s) > b then b:=length(s);
+        if (c = ' ')OR(c = '.') then s:='';
+        if (c = chr(12)) then read(fileIn,c);
+    end;
+    writeln('Dlzka slova:', b);
+    readln();
+    close(fileIn);
+end.
