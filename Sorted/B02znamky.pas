@@ -1,4 +1,4 @@
-program vysvacenie;
+program tkniha;
 
 uses crt;
 
