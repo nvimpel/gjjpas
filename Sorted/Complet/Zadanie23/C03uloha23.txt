@@ -1,0 +1,26 @@
+Úloha č. 1
+
+Vytvorte program, ktorý bude pomocou hviezdičiek (*) vykresľovať  zvláštne  štvorce  podľa ukážky.
+V textovom súbore je postupnosť čísel  – tieto čísla predstavujú veľkosť strany štvorca. Program bude na obrazovku vykresľovať pod seba štvorce požadovanej veľkosti a oddeľovať ich prázdnym riadkom.
+
+· Veľkosť strany štvorca je celé číslo rozsahu 5 až 20.
+
+VSTUP:
+5
+6
+
+VÝSTUP:
+*****
+*   *
+* * *
+*   *
+*****
+
+******
+*    *
+* ** *
+* ** *
+*    *
+******
+
+

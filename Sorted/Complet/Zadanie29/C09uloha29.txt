@@ -1,0 +1,11 @@
+Úloha č. 1
+
+Vytvorte program, ktorý bude robiť prevod z desiatkového čísla na číslo dvojkové. Na vstupe prečíta desiatkové celé číslo z intervalu <0,65535> a na výstupe vypíše jeho binárny  ekvivalent vo vhodnej forme.
+
+VSTUP:
+Zadaj cele cislo z intervalu 0 az 65535: 78
+
+VYSTUP:
+78(10)=1001110(2)
+
+

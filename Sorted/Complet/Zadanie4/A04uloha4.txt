@@ -1,0 +1,10 @@
+Úloha č. 1
+
+Do jednej SMSky môžeme napísať len 160 znakov. Vytvorte program, ktorý pomôže pri písaní správ úpravou textu. V textovom súbore je v každom riadku akokoľvek dlhý text, ktorý by sme chceli poslať SMS správami. Každý text (riadok súboru) skráťte odstránením nadbytočných medzier tak, aby každé slovo textu začínalo veľkým písmenom a takto upravený text vypíšte (podľa ukážky).
+VSTUP:
+• ahoj mama! prave mam prestavku, o chvilku nam zacina programovanie - velmi sa tesim, lebo ideme robit test a ja som vcera cele popoludnie programoval (preto som neumyl riady vecer), takze viem vsetko, co sme riesili na hodinach a aj viac, lebo som si sam vymyslel dalsie priklady! no uz zvoni, tak idem konecne na to! :)
+• ahoj mama! test mame za sebou - ako zvycajne, zase bude jednotka, uz neviem,co budem s tolkymi robit! ved tak ako vzdy, aj dnes boli priklady smiesne lahke! ;)
+VÝSTUP:
+AhojMama!PraveMamPrestavku,OChvilkuNamZacinaProgramovanie-VelmiSaTesim,LeboIdemeRobitTestAJaSomVceraCelePopoludnieProgramoval(pretoSomNeumylRiadyVecer),TakzeViemVsetko,CoSmeRiesiliNaHodinachAAjViac,LeboSomSiSamVymyslelDalsiePriklady!NoUzZvoni,TakIdemKonecneNaTo!:)
+AhojMama!TestMameZaSebouAkoZvycajne,ZaseBudeJednotka,UzNeviem,CoBudemSTolkymiRobit!VedTakAkoVzdy,AjDnesBoliPrikladySmiesneLahke!;)
+

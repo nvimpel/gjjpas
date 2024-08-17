@@ -1,0 +1,9 @@
+Úloha č. 1
+
+V textovom súbore máme uložený malý slovník slovenských slov, kde v každom riadku je jedno slovo(všetky slová sú písané malými písmenami). Vytvorte program, ktorý bude zisťovať výskyt palindromov v tomto slovníku:
+• Vypíše všetky nájdené palindromy na obrazovku
+• Zistí počet palindromov v slovníku a vypíše ho na obrazovku
+• Zapíše všetky nájdené palindromy do nového textového súboru
+
+Poznámka: Palindrom je slovo alebo slovné spojenie, ktoré sa číta rovnako spredu i zozadu -> MADAM, ŤAHAŤ, KOBYLAMAMALYBOK ....
+

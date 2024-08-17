@@ -1,0 +1,10 @@
+Úloha č. 1
+
+Loptička je pustená z výšky V (napr. 2 m), koeficient odrazu od zeme je K (napr. 83% alebo 0,83).
+Zostavte program, ktorý:
+1. napíše, koľko krát loptička vyskočí do výšky väčšej ako 1 meter;
+2. vypíše tabuľku pre prvých 10 odrazov - bude v nej poradové číslo odrazu a výška, do ktorej
+loptička vyskočí.
+Upravte výpis tabuľky tak, aby sa výšky menšie ako 1 meter napísali v centimetroch.
+
+

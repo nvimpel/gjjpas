@@ -1,0 +1,18 @@
+Úloha č. 1
+
+Vytvorte matematickú pomôcku, ktorá bude študentovi pomáhať počítať korene kvadratickej rovnice aj s vyhodnotením. Koeficienty a, b, c z rovnice ax2 + bx +c = 0 sa zadávajú z klávesnice. Koeficient a nesmie byť rovný 0!
+
+VSTUP: 3 reálne čísla
+VÝSTUP: 2 čísla, 1 číslo alebo žiadne číslo, podľa výsledku diskriminantu a jedna z troch viet:
+„Rovnica ma dva korene“
+„Rovnica ma jeden dvojnasobny koren“
+„Rovnica nema riesenie v obore realnych cisel“
+
+Matematická poznámka:
+Korene kvadratickej rovnice:
+x1,2 = - b +- - D / (2a) pričom D je diskriminant D = b2 – 4ac
+Ak D > 0, rovnica má 2 korene x1 a x2
+Ak D = 0, rovnica má 1 dvojnásobný koreň x
+Ak D < 0, rovnica nemá riešenie v obore reálnych čísel
+
+

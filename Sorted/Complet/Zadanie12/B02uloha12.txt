@@ -1,0 +1,20 @@
+Úloha č. 1
+
+Zostavte program, ktorý bude spracovávať známky žiakov.
+Vo vstupnom súbore sa v prvom riadku nachádza priezvisko žiaka, pod ním v ďalšom riadku jednotlivé známky, za poslednou známkou žiaka je nula.
+Program prečíta známky žiakov a pre každého z nich vypíše na obrazovku počet známok, vypočíta ich priemer a určí celkový prospech:
+• Žiak prospel s vyznamenaním, ak je jeho priemer do 1,5 a nemá žiadnu trojku (či horšiu);
+• inak prospel veľmi dobre, ak je jeho priemer do 2,0 a nemá žiadnu štvorku a päťku;
+• inak prospel, ak nemá žiadnu päťku;
+••	inak neprospel.
+VSTUP:
+Kovac
+11213120
+Majerska
+111111110
+
+VÝSTUP:
+Kovac 7 znamok, priemer 1.57, prospel velmi dobre
+Majerska 8 znamok, priemer 1, prospel s vyznamenanim
+
+

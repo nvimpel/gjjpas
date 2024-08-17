@@ -1,0 +1,19 @@
+Úloha č. 1
+
+Vytvorte program KENO, ktorý:
+• Načíta od užívateľa 10 čísel z intervalu 1 až 80, ktoré podáva v hre KENO. 
+• Vyžrebuje 20 čísel z intervalu 1 až 80 tak, aby sa neopakovali.
+• Vypíše tieto vyžrebované čísla vo vhodnom tvare na obrazovku.
+• Zistí, koľko čísel užívateľ uhádol a vypíše túto informáciu na obrazovku.
+
+VSTUP:
+Zadaj 10 čísel, ktoré chces podat v hre keno:
+10,25,13,11,75,80,1,47,16,18
+
+VÝSTUP:
+Vyzrebovane cisla:
+15,26,14,80,4,11,78,65,3,8,9,55,56,70,34,79,74,76,1,2
+Uhadol si 3 cisla z 10.
+
+
+

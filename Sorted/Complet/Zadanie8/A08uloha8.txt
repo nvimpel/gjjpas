@@ -1,0 +1,10 @@
+Úloha č. 1
+
+Vytvorte hru „Hádaj číslo“, pri ktorej počítač vymyslí celé číslo z intervalu 1..100. Hráč zadá číslo, počítač mu vždy poradí, či je hádané číslo menšie alebo väčšie ako zadané. Hra končí uhádnutím čísla. 
+Program bude mať nasledujúce vlastnosti:
+• Počítač na konci programu vypíše hlásenie „Uhádol si“ a počet pokusov, ktoré hráč potreboval na uhádnutie čísla.
+• Vypýta si meno hráča, ktoré následne zapíše do existujúceho textového súboru na koniec spolu s počtom pokusov, ktoré hráč potreboval na uhádnutie čísla, tzv. „tabuľka úspešných“.
+(formát zápisu do textového súboru: meno_hraca pocet_pokusov
+napr.: Bombarder 5)
+• Upravte program tak, aby si vymyslené číslo vyberal z intervalu <a,b>,  pričom a,b bude zadané hráčom z klávesnice.
+

@@ -1,0 +1,12 @@
+Úloha č. 1
+
+Vytvorte program, ktorý bude robiť prevod z dvojkového čísla na číslo desiatkové. Na vstupe prečíta binárne číslo max.16 b a na výstupe vypíše jeho desiatkový  ekvivalent.
+
+VSTUP:
+Zadaj binarne cislo maximalne 16 b: 1001110
+
+VYSTUP:
+1001110(2)=78(10)
+
+
+

@@ -1,0 +1,11 @@
+Úloha č. 1
+
+Výsledky štúdie ukazujú, že človek nečíta slová po písmenkách (ako prváčik), ale vníma ho ako celok – stačí, ak je prvé a posledné písmeno slova na svojom mieste a ostatné písmená môžu byť mierne rozhádzané. Zostavte program, ktorý pomôže pri overovaní tejto hypotézy – zo súboru prečíta text, rozhádže písmená vo vnútri slov a vypíše ho na obrazovku.
+
+· Stačí, ak program v slovách s dĺžkou <4,6> vykoná jednu zámenu dvoch susedných písmen (2. a 3. písmena) a v slovách s dĺžkou väčšou ako 6 vykoná dve výmeny dvoch susedných písmen (2. a 3. písmena, n-2. a n-1. písmena).
+
+VSTUP:
+Na tomto texte sa pokusime overit hypotezu.
+VÝSTUP:
+Na tmoto txete sa pkousmie oevrit hpyotzeu.
+

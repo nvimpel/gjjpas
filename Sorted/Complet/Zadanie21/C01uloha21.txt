@@ -1,0 +1,27 @@
+Úloha č. 1
+
+Vytvorte program, ktorý bude pomocou hviezdičiek (*) vykresľovať  pravouhlé rovnoramenné trojuholníky podľa ukážky.
+V textovom súbore je postupnosť čísel  – tieto čísla predstavujú dĺžku ramena trojuholníka.
+Program bude na obrazovku vykresľovať pod seba trojuholníky požadovanej veľkosti a oddeľovať ich prázdnym riadkom.
+
+· Veľkosť trojuholníka je celé číslo rozsahu 2 až 20.
+
+VSTUP:
+5
+2
+3
+
+VÝSTUP:
+*
+**
+***
+****
+*****
+
+*
+**
+
+*
+**
+***
+

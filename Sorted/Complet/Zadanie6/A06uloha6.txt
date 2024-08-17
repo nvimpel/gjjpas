@@ -1,0 +1,13 @@
+Úloha č. 1
+
+Peter má zavírený počítač vírusom, ktorý v každom odoslanom maily otočí jednotlivé slová odzadu. Vytvorte program, ktorý:
+• bude obsahovať funkciu Otoc, ktorá otočí zadaný reťazec
+• prečítajte z textového súboru postupne celý mail a vypíšte ho na obrazovku
+• pomocou vami vytvorenej funkcie otočte jednotlivé slová v maily. 
+Predpokladajme, že text je napísaný korektne a slová sú oddelené práve jednou medzerou. Každá veta končí bodkou a je práve na konci riadku. Text neobsahuje čiarky.
+
+VSTUP : yrbod ned.
+	   misorp sav o einalsaz hcynavodazop vodalkod.
+VÝSTUP: dobry den.
+	   prosim vas o zaslanie pozadovanych dokladov. 	 
+

@@ -1,0 +1,8 @@
+Úloha č. 1
+
+Hádžeme dvomi kockami a máme tipovať súčet, preto treba zistiť, ktorý súčet padá najčastejšie. Zostavte program, ktorý bude simulovať hody dvoma kockami nasledovne:
+• programu zadávame počet hodov
+• jednotlivé hody a ich súčty sa vypíšu do riadkov
+• program zistí, ktoré súčty koľkokrát padli a vypíše ich
+• program zapíše do textového súboru, ktoré súčty koľkokrát padli
+

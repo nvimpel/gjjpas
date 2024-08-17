@@ -1,0 +1,19 @@
+Úloha č. 1
+
+V textovom súbore má mzdová účtovníčka v každom riadku čistú mzdu jedného zamestnanca v €, ktorú mu bude vyplácať. Z banky musí vybrať celkovú sumu miezd v takých  nominálnych  hodnotách bankoviek, aby každému zamestnancovi mohla dať presne tú sumu, ktorú má na výplatu. (Zamestnanec by nemal účtovníčke vydávať)
+Zostavte program „mincovka“, ktorý načíta textový súbor a na výstupe vypíše, koľko ktorých bankoviek a mincí musí účtovníčka vybrať z banky. 
+
+· Pre zjednodušenie úlohy budeme uvažovať len s existenciou týchto nominálnych hodnôt bankoviek a mincí: 100, 50, 10, 5, 1 €.
+
+VSTUP:
+452
+124
+356
+
+VÝSTUP:
+100: 8
+ 50: 2
+ 10: 2
+  5: 1
+  1: 7 
+

@@ -1,0 +1,20 @@
+Úloha č. 1
+
+Vytvorte program, ktorý do 25 prvkového poľa čísel náhodne rozmiestni čísla 1 až 25 tak, aby sa neopakovali a 
+• pole vypíše vo vhodnom tvare na obrazovku,
+• pole zapíše vo vhodnom tvare do textového súboru.
+
+VÝSTUP:
+3 5 14 23	15 25 1 6	8 11 2 4 22 21 7 10	9 18 13 24 12 19 16 20 17
+
+
+
+
+
+
+
+
+
+
+
+

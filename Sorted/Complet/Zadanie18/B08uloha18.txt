@@ -1,0 +1,13 @@
+Úloha č. 1
+
+V textovom súbore je uložený text tak, že v každom riadku je práve jedna veta ukončená bodkou. Pre zjednodušenie bude oddeľovačom iba medzera a každá veta začína malým písmenom.
+Zostavte program, ktorý zistí najdlhšie slovo v tomto texte a vypíše jeho dĺžku na obrazovku. 
+
+VSTUP:
+rolnici uz zacali siat.
+najobhospodarovanejsie polia vyclenili na psenicu.
+ostatne len na kukuricu.
+VÝSTUP:
+Najdlhsie slovo: najobhospodarovanejsie
+Dlzka slova: 22
+

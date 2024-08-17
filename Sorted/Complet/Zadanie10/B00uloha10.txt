@@ -1,0 +1,8 @@
+Úloha č. 1
+
+V textovom súbore je uložený priebeh hlasovania divákov v reality show. V každom riadku je uložené práve jedno telefónne číslo, na ktoré prišla SMS-ka. Diváci mohli hlasovať na čísla 6930 až 6939. Vytvorte program, ktorý zistí:
+• koľko hlasov dostal každý zo súťažiacich
+• ktorý súťažiaci dostal najmenej hlasov a teda nepostupuje do ďalšieho kola
+
+
+

@@ -1,0 +1,15 @@
+Úloha č. 1
+
+Vytvorte učebnú pomôcku, ktorá bude pomocou počítača skúšať malú násobilku aj s vyhodnotením. Skúšaný zadá na vstupe počet príkladov, ktoré chce riešiť ( max. 10) a počítač mu postupne generuje náhodne príklady, ku ktorým skúšaný pripisuje výsledky. Počítač na konci programu vypíše vyhodnotenie skúšania.
+
+VSTUP:  Zadaj počet prikladov na malu nasobilku: 3
+VÝSTUP: 3x4=12
+        SPRAVNE! 
+	   5x5=20
+        NESPRAVNE!!! Spravne je 25 
+        6x5=30
+        SPRAVNE! 
+	   Spravne si vyriesil 2 priklady z 3.
+        Tvoje percentualna uspesnost je 66%.
+	   Pokazil si priklad/y c.: 2      	  
+

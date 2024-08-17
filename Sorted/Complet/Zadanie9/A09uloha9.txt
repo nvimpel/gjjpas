@@ -1,0 +1,15 @@
+Úloha č. 1
+
+Do jednej SMSky môžeme napísať len 160 znakov. Vytvorte program, ktorý pomôže pri písaní správ delením textu.
+V textovom súbore je v každom riadku akokoľvek dlhý text, ktorý by sme chceli poslať SMS správami. Každý text (riadok súboru) vypíšte po jednotlivých 160-znakových častiach (podľa ukážky).
+
+VSTUP:
+· ahoj mama! prave mam prestavku, o chvilku nam zacina programovanie - velmi sa tesim, lebo ideme robit test a ja som vcera cele popoludnie programoval (preto som neumyl riady vecer), takze viem vsetko, co sme riesili na hodinach a aj viac, lebo som si sam vymyslel dalsie priklady! no uz zvoni, tak idem konecne na to! :)
+· ahoj mama! test mame za sebou - ako zvycajne, zase bude jednotka, uz neviem, co budem s tolkymi robit! ved tak ako vzdy, aj dnes boli priklady smiesne lahke! ;)
+
+VÝSTUP:
+1. CAST: ahoj mama! prave mam prestavku, o chvilku nam zacina programovanie - velmi sa tesim, lebo ideme robit test a ja som vcera cele popoludnie programoval (pret
+2. CAST: o som neumyl riady vecer), takze viem vsetko, co sme riesili na hodinach a aj viac, lebo som si sam vymyslel dalsie priklady! no uz zvoni, tak idem konecne na
+3. CAST: to! :)
+1. CAST: ahoj mama! test mame za sebou - ako zvycajne, zase bude jednotka, uz neviem, co budem s tolkymi robit! ved tak ako vzdy, aj dnes boli priklady smiesne lahke! ;)
+

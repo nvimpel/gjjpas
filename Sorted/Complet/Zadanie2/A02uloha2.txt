@@ -1,0 +1,20 @@
+Úloha č. 1
+
+Firma má mesačnú výplatnú listinu svojich maximálne 20 zamestnancov uloženú v textovom súbore mzda.txt, ktorý má v každom riadku jedného zamestnanca s nasledovnou štruktúrou: 
+rodne_cislo mzda
+
+Napr.: 6153287234 780
+	  7204147312 1234
+	   ......
+	
+• Vypíšte celú výplatnú listinu na obrazovku v tvare:
+R.c: 6153287234 780 EUR
+R.c: 7204147312 1234 EUR
+.......
+• Vypíšte celkový objem finančných prostriedkov vyplatených firmou na mzdy
+• Vypíšte najnižšiu a najvyššiu mzdu vyplatenú firmou
+• Vypíšte priemernú mzdu mužov a žien v tejto firme na základe rodného čísla. 
+
+Poznámka: Rodné číslo obsahuje 10 číslic. Prvých 6 číslic vyjadruje dátum narodenia v tvare RRMMDD, kde RR označuje rok, MM mesiac a DD deň narodenia. Ženy majú k mesiacu pripočítanú hodnotu 50:  rrmmddxxxx – muž,  rr(50+mm)ddxxxx – žena
+
+

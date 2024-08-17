@@ -1,0 +1,20 @@
+Úloha č. 1
+
+Zostavte program na jednoduché zašifrovanie textu. Kľúčom šifrovania je postupnosť čísel k1, k2, ..., kN.
+Pri šifrovaní sa písmená cyklicky posúvajú o príslušnú hodnotu kľúča, teda prvé písmeno o k1, 2. písmeno o k2, ..., N. písmeno o kN, (N+1). písmeno opäť o k1, (N+2). písmeno o k2, atď.
+Vo vstupnom súbore sa v prvom riadku nachádza šifrovací kľúč (postupnosť čísel) ukončený nulou, zvyšok súboru predstavuje text. Vytvorte program na jeho zašifrovanie.
+
+· Medzery a iné symboly si program nebude všímať, bude meniť len písmená;
+· uvažujeme o ASCII texte, nie o písmenách s diakritikou;
+· abeceda má 26 písmen;
+· celý text bude malými písmenami;
+· kľúč nebude mať viac ako 26 čísel, každé číslo kľúča je jednociferné.
+
+VSTUP:
+8130
+toto je tajny text
+
+VÝSTUP:
+bpww kh bbmvz wmyw
+
+

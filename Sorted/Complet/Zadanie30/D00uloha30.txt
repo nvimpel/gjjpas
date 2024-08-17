@@ -1,0 +1,22 @@
+Úloha č. 1
+
+V súbore máme uložené časy trvania telefonických hovorov v sekundách.
+Zostavte program, ktorý zo vstupného súboru bude čítať časy v sekundách (určí a vypíše ich počet) a prevedie ich na prehľadnejší formát podľa ukážky - plný tvar je H:MM:SS, kde H je počet hodín, M počet minút a S počet sekúnd.
+
+· Vo výpise budú nuly zľava vynechané a nahradené medzerami, viď vzorový výstup.
+
+VSTUP:
+3000
+730
+308
+3967
+15
+
+VÝSTUP:
+pocet zaznamov: 5
+   50:00
+   12:10
+    5:08
+ 1:06:07
+      15
+

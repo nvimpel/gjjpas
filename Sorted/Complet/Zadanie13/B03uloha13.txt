@@ -1,0 +1,25 @@
+Úloha č. 1
+
+Naprogramujte hod tzv. „ZUNO kockou“. To je kocka, ktorá je veľmi zvláštna:
+• Na jej šiestich stranách sú miesto čísel 1 až 6 sumy v nasledovnom poradí: 10 €, 20 €, 30 €, 50 €, 100 €, 1000 €.
+• Kocka nie je „rovnomerná“, ale jednotlivé sumy padajú s nasledovnou pravdepodobnosťou:
+o  10 € 	 - 50 %
+o  20 € 	 - 39 %
+o  30 €   	 - 5 %
+o  50 €   	 - 3 %
+o  100 € 	 - 2 %
+o  1000 € - 1 % 
+ Overte si objektivitu Vašej naprogramovanej ZUNO kocky tak, že si program vypýta počet hodov kockou, následne vykoná hody, pričom si bude pamätať, koľkokrát padli jednotlivé sumy a tie potom vypíše na obrazovku.
+
+VSTUP:
+Zadaj počet hodov kockou ZUNO: 1000
+
+VÝSTUP:
+10 € - 506 krat
+20 € - 385 krat
+30 € - 54 krat
+50 € - 31 krat
+100 € - 18 krat
+1000 € - 6 krat
+
+

@@ -1,0 +1,19 @@
+Úloha č. 1
+
+V textovom súbore máme zapísaný ľubovoľný text bez použitia diakritiky. V každom riadku je maximálne 255 znakov. Zostavte program, ktorý bude z daného textu vyhodnocovať tzv. „frekvenčnú tabuľku hlások“ (veľké písmená v texte započíta do počtu malých písmen v texte):
+• Vyhodnotí početnosť jednotlivých znakov anglickej abecedy v texte.
+• Vyhodnotí percentuálne zastúpenie jednotlivých znakov anglickej abecedy v texte.
+
+VSTUP:
+Adam v skole nesedel, abecedu nevedel.
+Prisli k nemu lisky, citali mu z knizky.
+
+VÝSTUP:
+a – 4	b – 1	c – 2	.....	w – 0	z – 2
+
+a – 6,4%	b – 1,6%	c – 3,2%	.....	w – 0,0%	z – 3,2%
+
+
+
+
+

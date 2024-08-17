@@ -1,0 +1,21 @@
+Úloha č. 1
+
+Každý zákazník veľkoobchodu má pridelené zákaznícke číslo z intervalu 1 až 99. Pri nákupe sa do protokolu zaznačí číslo zákazníka a cena nákupu.
+Zostavte program, ktorý bude zo súboru čítať dvojice čísel: číslo zákazníka a cenu nákupu. Program podľa vzorovej ukážky vypíše čísla zákazníkov, ktorí zaplatili najviac (a uvedie sumu).
+
+VSTUP:
+23 1900
+22 500
+54 1000
+22 600
+56 2500
+23 1000
+22 200
+75 3000
+23 100
+
+VÝSTUP:
+Najvacsiu sumu 3000 EUR zaplatili zakaznici c.: 23 75
+
+
+
